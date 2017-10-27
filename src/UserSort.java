@@ -68,6 +68,7 @@ public class UserSort {
 		for(int i=1; i<listSize; i++){
 			insert(initialList[i]);
 		}	
+		System.out.println(Arrays.toString(outputList));
 	}
 	
 
@@ -81,8 +82,8 @@ public class UserSort {
 	}
 	
 	private static int findSpot(String string){
-        int checkBound0 =  1;
-        int checkBound1 =  outputListSize - 1;
+        int checkBound0 =  0;
+        int checkBound1 =  outputListSize; // - 1;
         int checkPoint = 0;
         do  {
         	checkPoint = (int) Math.floor( (checkBound0 + checkBound1) / 2);
@@ -90,14 +91,17 @@ public class UserSort {
         	Scanner in = new Scanner(System.in);
         	int oneOrTwo = in.nextInt();		
         	if(oneOrTwo == 1){
-        		checkBound1 = checkPoint;
+        		if(checkBound0 != checkPoint){
+        			checkBound0 = checkPoint;
+        		}
+        		checkBound0 = checkBound0 + 1;
         	} else if (oneOrTwo == 2) {
-        		checkBound0 = checkPoint;
+        		checkBound1 = checkPoint;
         	} else {
         		System.out.println("Must enter 1 or 2");
         	}
         	
-        } while ((checkBound1 - checkBound0) > 2);
+        } while (checkBound0 != checkBound1 && checkBound0 < checkBound1);
 		return checkBound0;
 	}
 	
