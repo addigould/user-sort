@@ -9,7 +9,7 @@ As a young lad, I would see rating lists such as "100 Most Influential Rock Albu
 
 I realized that I could write a program that could prompt a user with a series of one-on-one comparisons so that the placement of every item in a ranked list would be justified. As the program is driven by user input, I neglected the program's computational time complexity (irrelevant here as it always waits for user response) and instead strove limit the number of comparisons the user has to make to a worst-case of nlog(n).
 
-###How to use this program 
+### How to use this program 
 
 	1. Enter the data you wish to sort in a plain text file, one datum per line.
 	2. Put that file in the "data" folder of the user-sort program directory
