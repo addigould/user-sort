@@ -25,18 +25,20 @@ public class UserSort {
 		
 		//file reading sourced from https://www.roseindia.net/java/beginners/java-read-file-line-by-line.shtml
 		try{
+			
+			  Scanner filenameScanner = new Scanner(System.in); 
+			  System.out.println("Please enter the name of the input file (with .txt extension)");
+			  String inputFileName = filenameScanner.nextLine();
 			  // Open the file that is the first 
 			  // command line parameter
-			  FileInputStream fstream = new FileInputStream("data/testdata.txt");
+			  FileInputStream fstream = new FileInputStream("data/" + inputFileName);
 			  // Get the object of DataInputStream
 			  DataInputStream in = new DataInputStream(fstream);
 			  BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			  String strLine;
 			  //Read File Line By Line
 			  while ((strLine = br.readLine()) != null)   {
-			  // Print the content on the console
-			  System.out.println (strLine);
-			  listSize++;
+			      listSize++;
 			  }
 			  System.out.println("Total items in list: " + listSize);
 
@@ -74,8 +76,11 @@ public class UserSort {
 		//print the final ordering to the console
 		System.out.println(Arrays.toString(outputList));
 		//write the ordering to a text file
+		Scanner filenameScanner2 = new Scanner(System.in); 
+		System.out.println("Please enter the name of the output file (with .txt extension)");
+		String outputFileName = filenameScanner2.nextLine();
 		//TODO: generate filenames based on date/time so as not to overwrite previous outputs
-		PrintWriter writer = new PrintWriter("outputOrder.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("data/" + outputFileName, "UTF-8");
 		writer.println("Final list ordering");
 		for(int j = 0; j < outputListSize; j++){
 			writer.println("Item " + (j + 1) + ": " + outputList[j]);
